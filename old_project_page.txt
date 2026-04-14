@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="stylesheet" href="projects_styles.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <!-- <a href="#intro">Intro</a> -->
+    <a href="./index.html">About Me</a>
+    <a href="./resume.html">Resume</a>
+    <a href="./projects.html">Portfolio</a>
+    <a href="./index.html#orgs">Organizations</a>
+    <a href="./index.html#conferences">Conferences</a>
+    <a href="https://www.linkedin.com/in/kriti-shukla-258396182/">LinkedIn</a>
+    <a href="https://github.com/kas140472">GitHub</a>
+    <a href="./avocations.html">Avocations</a>
+    <a href="./index.html#contact">Contact</a>
+  </div>
+  
+  <h1>Projects.</h1>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <img src="ScreenPageImg.png" alt="Project 1">
+      <h2>Screen & Page</h2>
+      <p>Platform for tracking and organizing your entertainment journey!</p>
+      <a href="https://kas140472.github.io/ScreenAndPage/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="rpsImg.png" alt="Project 2">
+      <h2>Rock Paper Scissors</h2>
+      <p>Play Rock, Paper, Scissors or Bear, Ninja, Hunter against the computer! Reload the page to switch between Rock, Paper, Scissors and Bear, Ninja, Hunter.</p>
+      <a href="https://kas140472.github.io/RockPaperScissors/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="imageFilterImg.png" alt="Project 3">
+      <h2>Image Filter</h2>
+      <p>This Image Filter webpage allows the user to upload an image and subject it to various interesting filters. It uses the dukelearntoprogram SimpleImage library's methods to manipulate image pixels and JavaScript functions to code various filters. Part of w3Schools' CSS template has been used for webpage design.</p>
+      <a href="https://codepen.io/kas140472/full/PoBZZgm" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="serverAB_mixed1.png" alt="Project 4">
+      <h2>Meeting Scheduler app using Socket Programming</h2>
+      <p>An efficient meeting scheduling system using C/C++ on Unix, leveraging backend (UDP connection) and main (TCP connection) servers to identify optimal meeting times for participants based on their availability.</p>
+      <a href="https://github.com/kas140472/meeting_scheduler_app" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="dieselCycleImg.png" alt="Project 5">
+      <h2>Diesel Cycle Simulation</h2>
+      <p>The Diesel Cycle simulation demonstrates the change in P-v graph of the ideal Diesel Cycle and the piston movements of a cylinder working on Diesel cycle, as the pressure and volume variables change, as well as calculate and display the heat addition, heat rejection, net work output, and efficiency of the Diesel cycle.</p>
+      <a href="https://kas140472.github.io/DieselCycle-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="catProjectImg.png" alt="Project 3">
+      <h2>Ignition Delay Prediction with Python and Cantera</h2>
+      <p>An Ignition Delay Prediction Model for Compression Ignition (CI) engines using Python and Cantera.</p>
+      <a href="https://drive.google.com/file/d/194_OolD_CS1-zeifHSiX8BJ6_x_20kaP/view?usp=sharing" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="MLProjectImg.png" alt="Project 5">
+      <h2>Single Track Deposit geometry prediction using Machine Learning</h2>
+      <p>Led team of four to develop ML models (98 % accuracy) predicting Laser Directed Energy Deposition’s single-track deposit geometry, enhancing additive manufacturing product quality.</p>
+      <a href="https://drive.google.com/file/d/1AIwXT2LRgXDTvAGXsHiapmVK3BJHxdcl/view?usp=sharing" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="secondLawImg.png" alt="Project 6">
+      <h2>Second Law of Thermodynamics - Simulation</h2>
+      <p>The Second Law of Thermodynamics simulation depicts the second law of thermodynamics using two subsystems to show that 'the state of entropy of the entire universe, as an isolated system, will always increase over time'.</p>
+      <a href="https://kas140472.github.io/SecondLawOfThermodynamics-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="ComChartImg.png" alt="Project 4">
+      <h2>Compressibility Chart Simulation</h2>
+      <p>The Compressibility Chart simulation demonstrates how to read a generalized compressibility chart as well as how to use it to find unknown quantities like volume, pressure or temperature.</p>
+      <a href="https://kas140472.github.io/CompressibilityChart-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="guessMovieImg.png" alt="Project 4">
+      <h2>Guess the movie/show!</h2>
+      <p>Guess the movie/show/series I'm thinking of and unlock my review!</p>
+      <a href="https://kas140472.github.io/GuessMovie/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="cantiBeamImg.png" alt="Project 4">
+      <h2>Cantilever Beam Vibration Analysis</h2>
+      <p>Cantilever Beam Vibration Analysis</p>
+      <a href="https://kas140472.github.io/SDOF-FreeVibrationOfCantileverBeam-PlotGeneration/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="thermoHandbookImg.png" alt="Project 4">
+      <h2>Thermodynamics Data Handbook Simulation</h2>
+      <p>The Thermodynamics Data Handbook simulation demonstrates how to use two commonly used tables from the Thermodynamics data handbook: the saturated water table and the superheated water table, to obtain thermodynamic property values.</p>
+      <a href="https://kas140472.github.io/ThermodynamicsDataHandbook-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="psychroChartImg.png" alt="Project 4">
+      <h2>Psychrometric Chart Simulation</h2>
+      <p>The Psychrometric Chart simulation demonstrates how to read the psychrometric chart to determine the six psychrometric properties: dry bulb temperature, wet bulb temperature, relative humidity, dew point temperature, humidity ratio and enthalpy of an air-water mixture.</p>
+      <a href="https://kas140472.github.io/PsychrometricChart-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="carnotCycleImg.png" alt="Project 5">
+      <h2>Carnot Cycle Simulation</h2>
+      <p>The Carnot Cycle simulation demonstrates the change in P-v graph of Carnot Cycle as the pressure and volume variables change, as well as calculate and display the heat addition, heat rejection, net work output, and efficiency of the Carnot cycle.</p>
+      <a href="https://kas140472.github.io/CarnotCycle-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="dualCycleImg.png" alt="Project 5">
+      <h2>Dual Cycle Simulation</h2>
+      <p>The Dual Cycle simulation demonstrates the change in P-v graph of Dual Cycle as the pressure and volume variables change, as well as calculate and display the heat addition, heat rejection, net work output, and efficiency of the Dual cycle.</p>
+      <a href="https://kas140472.github.io/DualCycle-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="thirdLawImg.png" alt="Project 4">
+      <h2>Third Law of Thermodynamics - Simulation</h2>
+      <p>The Third Law of Thermodynamics simulation depicts the third law of thermodynamics with the help of spheres (representing atoms) whose speed, which is a representation of their energy, changes with the temperature until the temperature becomes absolute zero.</p>
+      <a href="https://kas140472.github.io/ThirdLawOfThermodynamics-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="throttlingImg.png" alt="Project 4">
+      <h2>Measurement of Steam Quality (Throttling) - Simulation</h2>
+      <p>The Measurement of Steam Quality (Throttling) simulation demonstrates the measurement of steam quality by bringing the state of the substance from the two-phase region to the single-phase or superheated region, and measuring the quality of steam using adiabatic throttling.</p>
+      <a href="https://kas140472.github.io/MeasurementOfSteamQuality_Throttling-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="stirlingCycleImg.png" alt="Project 5">
+      <h2>Stirling Cycle Simulation</h2>
+      <p>The Stirling Cycle simulation demonstrates the change in P-v graph of Stirling Cycle, as the pressure and volume variables change, as well as calculate and display the heat addition, heat rejection, net work output, and efficiency of the Stirling cycle.</p>
+      <a href="https://kas140472.github.io/StirlingCycle-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="ericssonCycleImg.png" alt="Project 5">
+      <h2>Ericsson Cycle Simulation</h2>
+      <p>The Ericsson Cycle simulation demonstrates the change in P-v graph of Ericsson Cycle, as the pressure and volume variables change, as well as calculate and display the heat addition, heat rejection, net work output, and efficiency of the Ericsson cycle.</p>
+      <a href="https://kas140472.github.io/EricssonCycle-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="ottoCycleImg.png" alt="Project 5">
+      <h2>Otto Cycle Simulation</h2>
+      <p>The Otto Cycle simulation demonstrates the change in P-v graph of Otto Cycle and the piston movements of a cylinder working on Otto cycle, as the pressure and volume variables change, as well as calculate and display the heat addition, heat rejection, net work output, and efficiency of the Otto cycle.</p>
+      <a href="https://kas140472.github.io/OttoCycle-Simulation/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="greenScreenImg.png" alt="Project 4">
+      <h2>Green Screen</h2>
+      <p>Upload the foreground image (an image with a green (more green than red or blue) background) and the background image. The Green Screen algorithm will replace the foreground images's background with the background image. The foreground and background images must be of the same size.
+
+        This webpage uses the dukelearntoprogram SimpleImage library's methods to manipulate image pixels and JavaScript functions to code the Green Screen algorithm. Part of w3Schools' CSS template has been used for webpage design.</p>
+      <a href="https://codepen.io/kas140472/full/QWBdGop" target="_blank">View Project</a>
+    </div>
+
+  </div>
+
+  <button type="button" class="mainIndex-btn" onclick="location.href='./index.html';">Go to Main</button>
+
+</body>
+</html>

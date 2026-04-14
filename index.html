@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shruti Shukla | Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        :root {
+            --primary-color: #0059b3;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffeeba;
+            --dark-color: #212529;
+            --light-bg: #f9f9f9;
+            --text-color: #333;
+            --gray-color: #6c757d;
+            --border-color: #eaeaea;
+            --sidebar-width: 250px;
+            --header-height: 70px;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-color); background-color: var(--light-bg); line-height: 1.6; margin: 0; padding: 0; }
+        .header { padding: 20px 30px; background-color: white; position: fixed; width: 100%; top: 0; z-index: 1000; height: var(--header-height); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { margin-left: 60px; }
+        .social-links-header { display: flex; gap: 20px; }
+        .social-icon { color: var(--dark-color); font-size: 20px; transition: color 0.3s; }
+        .social-icon:hover { color: var(--primary-color); }
+        .sidebar { position: fixed; top: var(--header-height); left: -100%; width: 450px; height: calc(100vh - var(--header-height)); background-color: var(--light-bg); box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 30px 20px; overflow-y: auto; z-index: 900; transition: left 0.3s ease; }
+        .sidebar.active { left: 0; }
+        .sidebar-toggle { position: absolute; top: 50%; left: 20px; transform: translateY(-50%); z-index: 1001; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--dark-color); }
+        .sidebar .nav-links { list-style: none; padding: 0; margin: 0; }
+        .sidebar .nav-links li { margin-bottom: 20px; }
+        .sidebar .nav-links a { padding: 10px 0; display: block; font-family: 'Roboto Mono', monospace; font-size: 16px; font-weight: 600; color: var(--text-color); text-decoration: none; border-bottom: 1px solid var(--border-color); transition: color 0.3s, border-color 0.3s; }
+        .sidebar .nav-links a:hover { color: var(--primary-color); border-color: var(--primary-color); }
+        .sidebar-footer { margin-top: 40px; text-align: left; }
+        .get-in-touch-title { font-size: 18px; font-weight: 700; color: var(--primary-color); margin-bottom: 20px; text-align: center; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; }
+        .main-content { margin-top: var(--header-height); text-align: center; }
+        .hero { height: calc(100vh - var(--header-height)); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 30px; }
+        .hero-greeting { font-family: 'Roboto Mono', monospace; font-size: 18px; color: var(--primary-color); margin-bottom: 10px; }
+        .hero-name { font-size: 64px; font-weight: 700; color: var(--dark-color); margin-bottom: 20px; }
+        .cursor { display: inline-block; font-weight: 300; color: var(--primary-color); animation: blink 0.8s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .fade-in { animation: fadeInUp 0.6s ease forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-title { font-size: 24px; color: var(--gray-color); margin-bottom: 30px; }
+        .hero-description { max-width: 600px; margin: 0 auto 40px; color: var(--text-color); }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary-custom { background-color: var(--primary-color); color: white; padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: 2px solid var(--primary-color); }
+        .btn-primary-custom:hover { background-color: transparent; color: var(--primary-color); }
+        .btn-secondary-custom { background-color: transparent; color: var(--dark-color); padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: 2px solid var(--dark-color); }
+        .btn-secondary-custom:hover { background-color: var(--dark-color); color: white; }
+        .section { max-width: 1200px; margin: 0 auto 100px; padding: 0 30px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-size: 36px; font-weight: 700; color: var(--dark-color); position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title::after { content: ''; position: absolute; width: 80px; height: 4px; background-color: var(--primary-color); bottom: 0; left: 50%; transform: translateX(-50%); }
+        .about-content { display: flex; gap: 60px; align-items: center; text-align: left; }
+        .about-text { flex: 1; }
+        .about-text p { margin-bottom: 20px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; margin-top: 20px; }
+        .skill-item { background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; text-align: center; font-size: 14px; font-weight: 600; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .skill-item:hover { border-color: var(--primary-color); color: var(--primary-color); transform: translateY(-2px); }
+        .experience-card { background: white; border-radius: 10px; padding: 30px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid var(--primary-color); }
+        .experience-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
+        .company-info { display: flex; align-items: center; gap: 15px; }
+        .company-name { font-size: 20px; font-weight: 700; margin: 0; }
+        .experience-period { color: var(--gray-color); font-size: 14px; white-space: nowrap; }
+        .position { color: var(--primary-color); font-size: 16px; margin-bottom: 15px; }
+        .experience-details ul { padding-left: 20px; margin-bottom: 15px; }
+        .experience-details li { margin-bottom: 8px; }
+        .skills-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skills-tag { background-color: #e8f0fe; color: var(--primary-color); padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .project-item { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border-top: 3px solid var(--primary-color); text-align: left; }
+        .project-item:hover { transform: translateY(-5px); }
+        .project-item h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .project-item p { color: var(--gray-color); font-size: 14px; margin-bottom: 15px; }
+        .project-link { color: var(--primary-color); font-weight: 600; text-decoration: none; font-size: 14px; }
+        .project-link:hover { text-decoration: underline; }
+        .project-links { margin-bottom: 15px; }
+        .badge-featured { background: var(--primary-color); color: white; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; display: inline-block; }
+        .view-all-projects { text-align: center; margin-top: 40px; }
+        .btn-view-all { background-color: transparent; color: var(--primary-color); padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; border: 2px solid var(--primary-color); transition: all 0.3s; display: inline-block; }
+        .btn-view-all:hover { background-color: var(--primary-color); color: white; }
+        .contact-section { background: white; border-radius: 15px; padding: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
+        .contact-item { text-align: center; padding: 20px; border: 1px solid var(--border-color); border-radius: 10px; transition: all 0.3s; }
+        .contact-item:hover { border-color: var(--primary-color); transform: translateY(-3px); }
+        .contact-item i { font-size: 30px; color: var(--primary-color); margin-bottom: 10px; }
+        .contact-item a { text-decoration: none; color: var(--text-color); font-weight: 500; }
+        .footer { background-color: white; padding: 50px 0; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .copyright { font-size: 14px; color: var(--text-color); }
+        .overlay { position: fixed; top: var(--header-height); left: 0; width: 100%; height: calc(100% - var(--header-height)); background-color: rgba(0,0,0,0.5); z-index: 800; visibility: hidden; opacity: 0; transition: opacity 0.3s ease; }
+        .overlay.active { visibility: visible; opacity: 1; }
+        .publication-card { background: white; border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid #28a745; text-align: left; }
+        .publication-card h4 { font-weight: 700; margin-bottom: 8px; }
+        .publication-card p { color: var(--gray-color); font-size: 14px; margin-bottom: 5px; }
+        .pub-badge { background: #28a745; color: white; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; display: inline-block; }
+        @media (max-width: 768px) { .hero-name { font-size: 40px; } .about-content { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><b>Portfolio</b></div>
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="social-links-header">
+            <a href="mailto:shrutijp2k1@gmail.com" class="social-icon"><i class="bi bi-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/shruti-s-521343203/" class="social-icon" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/Shruti81917" class="social-icon" target="_blank"><i class="bi bi-github"></i></a>
+        </div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#publications">Publications & Patents</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="./resume.html">Resume</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p class="get-in-touch-title">Let's connect!</p>
+            <ul class="nav-links">
+                <li><i class="bi bi-envelope"></i> <a href="mailto:shrutijp2k1@gmail.com">shrutijp2k1@gmail.com</a></li>
+                <li><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/shruti-s-521343203/" target="_blank">LinkedIn</a></li>
+                <li><i class="bi bi-github"></i> <a href="https://github.com/Shruti81917" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-content">
+        <!-- Hero -->
+        <section class="hero">
+            <p class="hero-greeting" id="hero-greeting" style="opacity:0;">Hello, I'm</p>
+            <h1 class="hero-name"><span id="typed-name"></span><span class="cursor">|</span></h1>
+            <p class="hero-title" id="hero-title" style="opacity:0;">Software Engineer | Based in Tokyo, Japan</p>
+            <p class="hero-description" id="hero-desc" style="opacity:0;">ECE graduate with experience in full stack development, machine learning and system engineering. IEEE published researcher and patent holder in AI based assistive technology.</p>
+            <div class="hero-buttons" id="hero-btns" style="opacity:0;">
+                <a href="#projects" class="btn-primary-custom">View My Work</a>
+                <a href="#contact" class="btn-secondary-custom">Get In Touch</a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="section-header"><h2 class="section-title">About Me</h2></div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a Software Engineer currently working at Belc Co. Ltd in Tokyo, Japan, with a Bachelor's degree in Electronics and Communications Engineering from New Horizon College of Engineering (CGPA: 9.05/10).</p>
+                    <p>My experience spans full stack application development, machine learning and system engineering. I have interned at IBM in cybersecurity and at L&T Construction Equipment in inventory management systems. I am also an IEEE published researcher and hold a patent in AI based assistive navigation technology.</p>
+                    <p>I am actively improving my Japanese language skills while working in a Japanese enterprise environment and am passionate about building impactful software solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="section-header"><h2 class="section-title">Skills</h2></div>
+            <div class="skills-grid">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">C#</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">HTML/CSS</div>
+                <div class="skill-item">SQL</div>
+                <div class="skill-item">MySQL</div>
+                <div class="skill-item">React.js</div>
+                <div class="skill-item">.NET</div>
+                <div class="skill-item">Django</div>
+                <div class="skill-item">Flask</div>
+                <div class="skill-item">PyTorch</div>
+                <div class="skill-item">Windows Forms</div>
+                <div class="skill-item">Git / GitHub</div>
+                <div class="skill-item">Arduino</div>
+                <div class="skill-item">SAP ERP</div>
+                <div class="skill-item">Machine Learning</div>
+                <div class="skill-item">Cybersecurity</div>
+                <div class="skill-item">IoT</div>
+                <div class="skill-item">SQLite</div>
+                <div class="skill-item">Image Segmentation</div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="section-header"><h2 class="section-title">Experience</h2></div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="company-info">
+                        <h3 class="company-name">Belc Co. Ltd</h3>
+                    </div>
+                    <span class="experience-period">Oct 2025 – Present</span>
+                </div>
+                <h4 class="position">Assistant System Engineer · Tokyo, Japan</h4>
+                <div class="experience-details">
+                    <ul>
+                        <li>Developed a Vending Machine Management System using Windows Forms and C#, covering product selection, inventory tracking and transaction management.</li>
+                        <li>Developed a Real Time Notification System for an internal enterprise application using C#, .NET and React.</li>
+                        <li>Currently building a Worker Performance Analysis System that tracks production task times, evaluates performance and generates management reports.</li>
+                    </ul>
+                </div>
+                <div class="skills-tags">
+                    <span class="skills-tag">C#</span>
+                    <span class="skills-tag">.NET</span>
+                    <span class="skills-tag">React</span>
+                    <span class="skills-tag">Windows Forms</span>
+                    <span class="skills-tag">SQL</span>
+                    <span class="skills-tag">Git</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="company-info">
+                        <h3 class="company-name">IBM (via AICTE & Edunet Foundation)</h3>
+                    </div>
+                    <span class="experience-period">Sep 2023 – Nov 2023</span>
+                </div>
+                <h4 class="position">Software Engineer Intern – Cybersecurity · Remote</h4>
+                <div class="experience-details">
+                    <ul>
+                        <li>Developed a Python based steganography program to encode and conceal data within images.</li>
+                        <li>Applied cybersecurity principles and data hiding techniques to build a functional security tool.</li>
+                        <li>Gained practical knowledge of cybersecurity concepts and encryption techniques.</li>
+                    </ul>
+                </div>
+                <div class="skills-tags">
+                    <span class="skills-tag">Python</span>
+                    <span class="skills-tag">Cybersecurity</span>
+                    <span class="skills-tag">Steganography</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="company-info">
+                        <h3 class="company-name">L&T Construction Equipment Limited</h3>
+                    </div>
+                    <span class="experience-period">Sep 2023 – Oct 2023</span>
+                </div>
+                <h4 class="position">Software Engineer Intern · Bangalore, India</h4>
+                <div class="experience-details">
+                    <ul>
+                        <li>Developed a Materials Requirements Planning (MRP) distribution system to automate the inventory management process.</li>
+                        <li>Designed and implemented MySQL database to store and manage inventory data efficiently.</li>
+                        <li>Gained hands on experience with SAP ERP systems in a real manufacturing environment.</li>
+                    </ul>
+                </div>
+                <div class="skills-tags">
+                    <span class="skills-tag">MySQL</span>
+                    <span class="skills-tag">SQL</span>
+                    <span class="skills-tag">SAP ERP</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications & Patents -->
+        <section id="publications" class="section">
+            <div class="section-header"><h2 class="section-title">Publications & Patents</h2></div>
+
+            <div class="publication-card">
+                <span class="pub-badge">IEEE Publication · July 2025</span>
+                <h4>Novel Pothole Detection System Using YOLOv8 Algorithm</h4>
+                <p>Co-researched and published a novel system for automatic detection of road potholes and humps using IoT based ultrasonic sensors and YOLOv8 machine learning algorithm. Achieved 92% identification accuracy.</p>
+                <div class="skills-tags">
+                    <span class="skills-tag">PyTorch</span>
+                    <span class="skills-tag">YOLOv8</span>
+                    <span class="skills-tag">Python</span>
+                    <span class="skills-tag">IoT</span>
+                    <span class="skills-tag">MySQL</span>
+                </div>
+            </div>
+
+            <div class="publication-card" style="border-left-color: #6f42c1;">
+                <span class="pub-badge" style="background:#6f42c1;">Patent · Nov 2024</span>
+                <h4>Smart Shoes: Integrated Navigation System for the Visually Impaired Using AI</h4>
+                <p>Co-designed an AI powered smart shoe system to assist visually impaired individuals in independent navigation using obstacle detection sensors, visual recognition algorithm and machine learning. App No. 202441081757</p>
+                <div class="skills-tags">
+                    <span class="skills-tag">Machine Learning</span>
+                    <span class="skills-tag">Computer Vision</span>
+                    <span class="skills-tag">IoT</span>
+                    <span class="skills-tag">GPS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="section-header"><h2 class="section-title">Featured Projects</h2></div>
+            <div class="projects-grid">
+
+                <div class="project-item">
+                    <img src="PotholeDetection.png" alt="Pothole Detection" style="width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:12px;">
+                    <span class="badge-featured">IEEE Published</span>
+                    <h3>Automatic Detection of Potholes and Humps</h3>
+                    <p>Road anomaly detection using YOLOv8 and Arduino, achieving 92% accuracy. Published in IEEE.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Shruti81917/Automatic-Detection-of-Potholes-and-Humps" class="project-link" target="_blank">View Project <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <span class="skills-tag">Python · PyTorch · YOLOv8 · Arduino</span>
+                </div>
+
+                <div class="project-item">
+                    <img src="skillBasedGaming.png" alt="QuestLearn" style="width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:12px;">
+                    <span style="background:#f0ad4e;color:white;font-size:11px;padding:2px 8px;border-radius:10px;margin-bottom:8px;display:inline-block;">🏆 2nd Place – Hackathon 2024</span>
+                    <h3>QuestLearn – Skill Based Gaming App</h3>
+                    <p>Game based learning app built for Société Générale Hackathon 2024. Navigate a map and solve puzzles.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Shruti81917/game-based-learning" class="project-link" target="_blank">View Project <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <span class="skills-tag">Python · Flask · JavaScript · SQLite</span>
+                </div>
+
+                <div class="project-item">
+                    <img src="smartKiosk.png" alt="Smart Kiosk" style="width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:12px;">
+                    <h3>Smart Kiosk for College Campus</h3>
+                    <p>Full stack Smart Kiosk covering club info, events, admission enquiry and a lost and found system.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Shruti81917/Smart-Kiosk" class="project-link" target="_blank">View Project <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <span class="skills-tag">Django · Python · HTML/CSS · JavaScript</span>
+                </div>
+
+                <div class="project-item">
+                    <img src="MRP.png" alt="MRP" style="width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:12px;">
+                    <h3>MRP Distribution System</h3>
+                    <p>Materials Requirements Planning system to automate inventory management developed during L&T internship.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Shruti81917/MRP-" class="project-link" target="_blank">View Project <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <span class="skills-tag">MySQL · SQL · SAP ERP</span>
+                </div>
+
+            </div>
+            <div class="view-all-projects">
+                <a href="./projects.html" class="btn-view-all">View All Projects</a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="section-header"><h2 class="section-title">Get In Touch</h2></div>
+            <div class="contact-section">
+                <p>I am currently open to new opportunities. Feel free to reach out!</p>
+                <div class="contact-grid">
+                    <a href="mailto:shrutijp2k1@gmail.com" class="contact-item" style="text-decoration:none;color:inherit;">
+                        <i class="bi bi-envelope"></i>
+                        <div>shrutijp2k1@gmail.com</div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shruti-s-521343203/" target="_blank" class="contact-item" style="text-decoration:none;color:inherit;">
+                        <i class="bi bi-linkedin"></i>
+                        <div>LinkedIn</div>
+                    </a>
+                    <a href="https://github.com/Shruti81917" target="_blank" class="contact-item" style="text-decoration:none;color:inherit;">
+                        <i class="bi bi-github"></i>
+                        <div>GitHub</div>
+                    </a>
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <div>Tokyo, Japan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="social-links">
+                <a href="mailto:shrutijp2k1@gmail.com" class="social-icon"><i class="bi bi-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/shruti-s-521343203/" class="social-icon" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/Shruti81917" class="social-icon" target="_blank"><i class="bi bi-github"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Shruti Shukla. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+            document.body.classList.toggle('sidebar-active');
+        });
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            document.body.classList.remove('sidebar-active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+                document.body.classList.remove('sidebar-active');
+            });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Typing animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const greeting = document.getElementById('hero-greeting');
+            const typedEl = document.getElementById('typed-name');
+            const title = document.getElementById('hero-title');
+            const desc = document.getElementById('hero-desc');
+            const btns = document.getElementById('hero-btns');
+            const fullText = 'Shruti Shukla';
+
+            // Step 1: Fade in greeting
+            setTimeout(() => {
+                greeting.style.transition = 'opacity 0.5s ease';
+                greeting.style.opacity = '1';
+            }, 300);
+
+            // Step 2: Type the name
+            let i = 0;
+            setTimeout(() => {
+                function typeWriter() {
+                    if (i < fullText.length) {
+                        typedEl.textContent += fullText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 80);
+                    } else {
+                        // Step 3: Fade in rest after typing
+                        setTimeout(() => {
+                            [title, desc, btns].forEach((el, idx) => {
+                                setTimeout(() => {
+                                    el.classList.add('fade-in');
+                                    el.style.opacity = '1';
+                                }, idx * 200);
+                            });
+                        }, 300);
+                    }
+                }
+                typeWriter();
+            }, 800);
+        });
+    </script>
+</body>
+</html>
